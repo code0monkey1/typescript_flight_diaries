@@ -33,13 +33,15 @@ router.post('/', (req, res) => {
   const entries = diaryService.addDiary(entry);
 
   res.send(entries);
+  
 }catch(error:unknown){
   
    let errorMessage="Error: ";
-     if (error instanceof Error)
+    
+   if (error instanceof Error)
        errorMessage+=error.message;
        
-    res.status(404).send(errorMessage);
+    res.status(400).json(errorMessage);
 }
 });
 
